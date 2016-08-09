@@ -7,21 +7,20 @@ class MapView extends React.Component {
   constructor(props) {
     super(props);
     this.onMapClick = this.onMapClick.bind(this);
+
     this.onMarkerRightclick = this.onMarkerRightclick.bind(this);
   }
 
   onMapClick(event) {
-    if (this.props.addMarkerToMapState) {
-      this.props.addMarker(
-        {
-          key: this.props.markers.length,
-          position: event.latLng,
-          defaultAnimation: 2
-        }
-      )
-      this.props.addMarkerToMapStateSwitch();
-      this.props.switchUploadModalState();
-    }
+      console.log(event);
+    this.props.addMarker(
+      {
+        key: this.props.markers.length,
+        position: event.latLng,
+        defaultAnimation: 2
+      }
+    )
+    console.log(this.props.markers)
   }
 
   onMarkerRightclick (index) {
@@ -30,30 +29,29 @@ class MapView extends React.Component {
 
   render() {
     return (
-    <span>
-      <section className='map'>
+
+      <section className='mapContainer'>
         <GoogleMapLoader
           containerElement={
             <div
               {...this.props.containerElementProps}
               style={{
-                height: "100%",
-                width: "100%"
+                height: "95%",
+                width: "95%"
               }}
             />
           }
           googleMapElement={
             <GoogleMap
-              ref='map'
+              ref={(map) => console.log(map)}
               defaultZoom={12}
               defaultCenter={{ lat: 37.754862, lng: -122.431558 }}
               onClick={this.onMapClick}
             >
               {this.props.markers.map((marker, index) => {
                 return (
-                  <Marker 
-                  key={marker.id}
-                  position={{lat:marker.lat, lng:marker.long}}
+                  <Marker
+                    {...marker}
                     onRightclick={() => this.onMarkerRightclick(index)} />
                 );
               })}
@@ -61,7 +59,6 @@ class MapView extends React.Component {
           }
         />
       </section>
-    </span>
     );
   }
 }
