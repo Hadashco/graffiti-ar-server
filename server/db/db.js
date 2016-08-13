@@ -16,8 +16,8 @@ Art.belongsToMany(Place, { through: ArtPlace });
 User.hasMany(Art);
 
 module.exports = {
-  db: db,
-  Place: Place,
-  Art: Art,
-  User: User,
+  db,
+  Place,
+  Art,
+  User,
 };
