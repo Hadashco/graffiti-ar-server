@@ -10,7 +10,9 @@ WORKDIR /usr/emblem-web/server
 RUN npm install nodemon -g -q \
     && npm install mocha -g \
     && npm install webpack -g \
-    && npm run build
+    && npm install	
+
+RUN npm config set bin-links false
 
 EXPOSE 3000
 
