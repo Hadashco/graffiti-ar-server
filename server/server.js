@@ -3,6 +3,7 @@ const morgan = require('morgan');
 const path = require('path');
 const bodyParser = require('body-parser');
 const addRouter = require('./router');
+const passport = require('passport');
 const sockets = require('./sockets');
 const connection = require('./db/db');
 const db = connection.db;
@@ -23,7 +24,7 @@ app.use(bodyParser.raw({
 }));
 
 app.use(morgan('dev'));
-
+app.use(passport.initialize())
 addRouter(app);
 
 app.get('/', (req, res) => {
