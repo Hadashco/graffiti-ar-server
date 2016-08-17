@@ -6,6 +6,7 @@ WORKDIR /usr/emblem-web
 
 COPY . .
 
+
 RUN npm install nodemon -g -q \
     && npm install mocha -g -q \
     && npm install webpack -g -q \
