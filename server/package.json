@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm install && nodemon -L server.js",
     "start:prod": "npm install && node server.js",
-    "install": "npm install --no-bin-links",
+    "install": "npm install",
     "test": "mocha",
     "build": "echo 'No build step for server.'"
   },
